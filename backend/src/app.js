@@ -1,7 +1,11 @@
+const cors = require('cors')
 require('dotenv').config();
 const express = require('express');
 const app = express();
 
+app.use(cors({
+  origin: '*',
+}))
 app.use(express.json());
 
 //  Routes
