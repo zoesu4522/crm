@@ -1,33 +1,25 @@
 const db = require('../config/db');
 
-/**
- * GET /api/customers
- * 取得所有客戶（支援搜尋 ?search=關鍵字）
- */
+
 const getAll = async (req, res) => {
   const { search } = req.query;
   try {
-    let sql = 'SELECT * FROM customers';
-    const params = [];
-
-    if (search) {
-      sql += ' WHERE name LIKE ? OR email LIKE ? OR company LIKE ?';
-      const keyword = `%${search}%`;
-      params.push(keyword, keyword, keyword);
-    }
-
-    sql += ' ORDER BY created_at DESC';
-    const [rows] = await db.query(sql, params);
-    res.json(rows);
+   if (search) {
+  const kw = `%${search}%`
+  const [rows] = await db.query(
+    'SELECT * FROM customers WHERE name LIKE ? OR email LIKE ? OR company LIKE ? ORDER BY created_at DESC',
+    [kw, kw, kw]
+  )
+  return res.json(rows)
+  }
+  const [rows] = await db.query('SELECT * FROM customers ORDER BY created_at DESC')
+  res.json(rows)
   } catch (err) {
     res.status(500).json({ message: '伺服器錯誤', error: err.message });
   }
 };
 
-/**
- * GET /api/customers/:id
- * 取得單一客戶（含訂單摘要）
- */
+
 const getById = async (req, res) => {
   const { id } = req.params;
   try {

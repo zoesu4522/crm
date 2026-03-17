@@ -9,9 +9,9 @@ app.use(cors({
 app.use(express.json());
 
 //  Routes
-app.use('/api/auth',      require('./routes/auth'));
-app.use('/api/customers', require('./routes/customers'));
-app.use('/api/orders',    require('./routes/orders'));
+app.use('/api/auth', require('./routes/auth'))
+app.use('/api/customers', require('./routes/customers'))
+app.use('/api/orders', require('./routes/orders'))
 
 // Health check
 app.get('/', (req, res) => res.json({ message: 'CRM API is running 🚀' }));

@@ -1,12 +1,10 @@
 const jwt = require('jsonwebtoken');
 
-/**
-  驗證 JWT Token
- 將解碼後的 user 資訊掛載至 req.user
- */
+
 const authMiddleware = (req, res, next) => {
   const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1]; // Bearer <token>
+  const token = authHeader?.split(' ')[1]
+
 
   if (!token) {
     return res.status(401).json({ message: '未提供 Token，請先登入' });

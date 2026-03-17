@@ -18,13 +18,15 @@ export default function Orders() {
   const [editId, setEditId] = useState(null)
   const [loading, setLoading] = useState(true)
 
-  const fetchOrders = async (status = '') => {
-    try {
-      const { data } = await api.get('/api/orders', { params: status ? { status } : {} })
-      setOrders(data)
-    } catch (err) { console.error(err) }
-    finally { setLoading(false) }
-  }
+ const fetchOrders = async (status = '') => {
+  const params = status ? { status } : {}
+  const { data } = await api.get('/api/orders', { params }).catch(e => {
+    console.error(e)
+    return { data: [] }
+  })
+  setOrders(data)
+  setLoading(false)
+}
 
   useEffect(() => {
     fetchOrders()

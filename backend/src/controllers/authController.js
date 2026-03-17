@@ -2,10 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const db = require('../config/db');
 
-/**
- * POST /api/auth/register
- * 一般用戶註冊（role 固定為 user）
- */
+
 const register = async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -28,7 +25,8 @@ const register = async (req, res) => {
 
     res.status(201).json({ message: '註冊成功', userId: result.insertId });
   } catch (err) {
-    res.status(500).json({ message: '伺服器錯誤', error: err.message });
+    console.error('register error:', err)
+    res.status(500).json({ message: '伺服器錯誤' }) ;
   }
 };
 
