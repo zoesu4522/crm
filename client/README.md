@@ -27,3 +27,8 @@ npm run build
 ```
 
 設定環境變數：`VITE_API_URL=https://crm-r13y.onrender.com`
+
+# test account
+
+email:test@exmaple.com
+password:123456
