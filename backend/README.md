@@ -163,4 +163,4 @@ npm start     # 正式模式
 
 | 角色  | Email               | 密碼       |
 |-------|---------------------|------------|
-| admin | admin@example.com   | admin1234  |
+| admin | admin@example.com   | password  |

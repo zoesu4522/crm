@@ -30,5 +30,7 @@ npm run build
 
 # test account
 
-email:test@exmaple.com
-password:123456
+| 角色  | Email               | 密碼       |
+|-------|---------------------|------------|
+| user  | test@exmaple.com    | 123456  |
+
